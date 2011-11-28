@@ -2,11 +2,19 @@ require 'initialiser'
 
 get '/book/:id' do
   @book = Book.find(params[:id])
-  haml :book
+  if @book.content.nil?
+    haml :waiting
+  else
+    haml :book
+  end
 end
 
 get '/' do
   haml :index
+end
+
+get '/wait' do
+  haml :waiting
 end
 
 get '/about' do
