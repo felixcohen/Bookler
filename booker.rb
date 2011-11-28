@@ -9,6 +9,11 @@ get '/book/:id' do
   end
 end
 
+get '/book/:id/delete' do
+  @book = Book.find(params[:id])
+  @book.delete
+end
+
 get '/' do
   haml :index
 end
