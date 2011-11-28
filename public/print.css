@@ -1,0 +1,367 @@
+/* Based on the Sample style sheet for boom!, the book microformat by Hakon Wium Lie and Bert Bos, November 2005 */
+/* You may reuse this style sheet for any purpose without any fees */
+
+
+
+html { 
+  margin: 0;
+  font-variant: regular;
+  line-height: 107%;
+  font-weight: lighter;
+}
+
+body { 
+  margin: 0 3.5%;
+  font: 12pt/1.26 "Fanwood", sans-serif;
+
+}
+
+h1, h2, h3, h5, h6 { 
+  font-family: 'Fanwood';
+  margin: 1em 0 1em 0;
+  page-break-after: avoid;
+  font-weight: lightest;
+  clear: both;
+} 
+
+h4 { 
+  font-family: 'Courier New';
+  margin: 0 0 0.25em 0;
+  page-break-after: avoid;
+  clear: both;
+}
+
+p.section-intro {font-style: italic;}
+
+h1 { 
+  padding: 0 0 0 0;
+  margin: 0;
+  font-size: 2em; 
+  line-height:1.1em;
+}
+
+h3 {
+	margin: 0 0 2em 0;
+}
+
+h2 { 
+  font-size: 2em;
+   page-break-after: avoid;
+page-break-before: right;
+  margin-bottom: 50%;
+  string-set: header content();
+}
+
+div#quote, div#title, div#flysheet, div#bio {
+	string-set: header none;
+	page-break-before: always;
+	page-break-after: always;
+}
+
+dl {
+	page-break-before: always;	
+}
+
+img.chapterimage {
+	string-set: header none;
+page-break-before: left;
+margin: auto auto;
+page: blank;
+display: block;
+}
+
+a.chapterlink {page-break-before: left; page: blank;
+}
+
+div.fore {page-break-before: right; page: frontmatter;}
+div.fore > p + p {text-indent: 0 !important;} 
+div.fore br {margin: 0 0;}
+p.notitalic {font-style:normal;}
+div.rubric {font-size: 1em; font-family: 'Hoefler Text'; font-style:italic;}
+
+h3 { 
+  font-size: 1em;
+  font-weight: bold;
+}  
+
+span.caps {
+	font-variant: small-caps;
+}
+
+img.chapters {
+	  height: 60px;
+	text-align: center;
+	margin-top: 0.8em;
+	  border: none;
+	clear: both;
+}
+
+p {text-indent: 1em; margin: 0.4em 0; clear: both; font-size: 100%; text-align: justify; hyphens: auto; }
+
+div.fore {page-break-before: right; page: frontmatter;}
+div.fore > p + p {text-indent: 0 !important;} 
+div.fore br {margin: 0 0;}
+p.notitalic {font-style:normal;}
+
+span.edited {font-style: italic;}
+img.logo {width: 2in; margin-top: 20em;}
+p.sidenote + p, p.caption, p.art { text-indent: 0 } 
+	
+	#toc > li {margin: 0.2em 0 0 0;}
+	
+
+pre {  margin: 1em 1.3em; }
+
+a { text-decoration: none; color: black }
+
+/*clear*/
+.clear {clear:both;line-height:0px;font-size:0px;height:0px;padding:0px;margin:0px;border:none;}
+/* Clearfix */
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+* html .clearfix {zoom:1;}
+/* IE6 */
+*:first-child+html .clearfix {zoom:1;}
+/* IE7 */
+.clr {overflow:hidden;/*method for clearing floats*/}
+     
+
+@page {
+  margin: 20mm 10mm 20mm 10mm;
+  size: 8.3in  11.7in !important;
+}
+
+div.meta > p, div.meta > p + p {text-indent: none;}
+
+blockquote { width: 80%; margin: 0.5em auto; font-size: 90%; text-align: justify; hyphens: auto;}
+blockquote > p {font-size: 100%;}
+
+/* define default page and names pages: cover, blank, frontmatter */
+@page :left {
+  @top-left {
+    font: 10pt "Fanwood", serif;
+    content: string(header, first); 	
+    font-style:italic;
+    vertical-align: bottom;
+    padding-bottom: 1.5em;
+  }
+
+  @bottom-left {
+    font: 10pt "Fanwood", serif;
+    content: counter(page);
+    padding-top: 1.5em;
+    vertical-align: top;
+  }
+}
+
+@page :right {
+  @top-right {
+    font: 10pt "Fanwood", serif;    
+	font-style:italic;
+    content: 'Bond Vigilantes'; 
+    vertical-align: bottom;
+    padding-bottom: 1.5em; 
+  }
+
+  @bottom-right {
+    font: 10pt "Fanwood", serif;
+    content: counter(page);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 1.5em;
+  }
+}
+
+
+@page blank :left {
+  @top-left { content: normal; }
+  @bottom-left { content: normal; }
+}
+
+@page blank :right {
+  @top-right { content: normal; }
+  @bottom-right { content: normal; }
+} 
+
+@page nohead :left {
+  @top-left { content: ' '; }
+}
+
+@page nohead :right {
+  @top-right { content: ' '; }
+}
+
+
+/* page breaks */
+
+div.frontcover { page-break-before: right; }
+div.backcover { page-break-before: left; }
+a.chapter { page-break-before: left; }
+
+
+.section-header {page-break-before: left; font-variant: small-caps; font-size: 3em;}
+
+
+div.frontpage img {
+  position: absolute;
+  size: 4.53in 7.27in !important;
+max-height: 9in;
+max-width: 8in;
+margin: 0;
+  left: 0; top: 0;
+  z-index: -1;
+display: none;
+}
+  
+
+
+div.backpage { page: backcover;  }    
+div.backpage img {
+  position: absolute;
+  size: 5.83in 8.27in !important;
+max-height: 10in;
+max-width: 10in;
+  left: 0; top: 0;
+display:none;
+  z-index: -1;
+}
+
+/* TOC */ 
+#toc {
+	margin:0 auto; 
+	padding:0;  
+	list-style-type: none;  
+	font-size: 100%;
+	page-break-before: always;
+	width: 80%;
+	page: blank;
+	}
+
+
+h2.contents {margin-bottom: 1em; text-align: center;}
+
+#toc > li { 
+  font-weight: normal;
+  margin-left: 15px;
+  margin-bottom: 0;
+} 
+
+#toc > li { 
+  margin: 13px 5px;
+  clear: right;
+  font-size: 0.8em;
+  font-weight: normal;
+page-break-after: avoid;
+}  
+ 
+#toc a {margin:0;}
+
+#toc > li > a::after {
+  content: leader('.') target-counter(attr(href), page);
+  font-style: normal;
+}
+
+#toc > li::before {
+  content: "Chapter " counter(toc-chapter, decimal);
+  margin-right: 15px;
+  color: #FFF;
+}
+
+#toc > li.chapter::before {
+  content: "Chapter " counter(toc-chapter, decimal);
+  counter-increment: toc-chapter;
+  page-break-after: avoid; 
+  font-style: italic;
+  font-weight: lighter;
+  margin-right: 15px;
+  color: #000;
+
+}
+
+/* chapter numbers */
+
+/* Frontmatter */
+#title,#flysheet,#quote,#blank,#bio {
+	page-break-before: always; 
+page-break-after: always; 	
+page: blank;
+}
+
+#flysheet > p
+{text-indent: none !important;}
+
+#title h1, h3, span {
+text-align: center;
+}
+
+h3 {margin: 1em auto; width: 70%;}
+
+#title span {display: block; margin: 0.2em 0;}
+
+#quote p {
+	padding-top: 6em;
+	font-size: 130%;
+	width: 80%;
+	margin: 0 auto;
+	 }
+#quote span.author {
+	margin-right: 10%;
+	padding-top: 10px;
+	font-style: italic;
+	float: right;
+	display: block;
+	font-size: 130%;
+
+}
+
+span.author { clear: both; display: block;}
+
+/*images*/
+div.signified a > img {display:block; max-width:4in; max-height: 3.4in; clear:both;margin: 0.1in auto;}
+
+/*exceptions*/
+.commenter-profile img, .commenter-profile, img.bug {dispaly:none;}   
+table {border: none;}
+div {border: 0.01cm solid #FFFFFF;}
+td {border: none; }
+
+.heading1::before,h1::before {
+  white-space: pre;
+  margin-left: 0;
+  font-size: 50%;
+  content: " \A";  /* ornaments */
+}
+
+.heading1::before, div.chapter h1::before { content: "Chapter " counter(chapter) " \A"; }
+
+div.frontcover h1::before, div.titlepage h1::before, div.halftitlepage h1::before {
+  content: normal;   /* that is, none */
+}
+
+.heading1, h1 { string-set: header content();}
+.heading1, div.chapter h1 { string-set: header "Chapter " counter(chapter) ": " content(); }
+
+/* index */
+
+ul.index { 
+  list-style-type: none;
+  margin: 0; padding: 0;
+  column-count: 2;
+  column-gap: 1em;
+}
+
+ul.index li a::after { content: ", " target-counter(attr(href), page); }
+ul.index li a:first-child::after { content: target-counter(attr(href), page); }
+
+ul.index li a {font-size:1em;}
+
+span.ref {display: block; margin: 0.3em 0em; font-size: 60%; font-style: italic;}
+
+li.defn {list-style: none; margin: 1em 0em; font-size: 80%;}
+dfn {font-style: normal;}
+em > dfn {font-style: italic;}
+dt {font-weight: normal; font-variant: small-caps;}
+dd {font-style: normal;} 
+
+/*TOC */
+
+#toc a::after { content: leader(".") target-counter(attr(href), page); } 
