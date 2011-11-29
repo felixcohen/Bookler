@@ -44,11 +44,11 @@ h3 {
 	margin: 0 0 2em 0;
 }
 
-h2 { 
+h2.chaptertitle { 
   font-size: 2em;
    page-break-after: avoid;
 page-break-before: right;
-  margin-bottom: 50%;
+  margin-bottom: 20%;
   string-set: header content();
 }
 
@@ -107,7 +107,7 @@ span.edited {font-style: italic;}
 img.logo {width: 2in; margin-top: 20em;}
 p.sidenote + p, p.caption, p.art { text-indent: 0 } 
 	
-	#toc > li {margin: 0.2em 0 0 0;}
+	#toc > li {margin: 0.2em 0 0 0; list-style-type: none;}
 	
 
 pre {  margin: 1em 1.3em; }
@@ -127,7 +127,7 @@ a { text-decoration: none; color: black }
 
 @page {
   margin: 20mm 10mm 20mm 10mm;
-  size: 8.3in  11.7in !important;
+  size: 6in  9in !important;
 }
 
 div.meta > p, div.meta > p + p {text-indent: none;}

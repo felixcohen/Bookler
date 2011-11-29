@@ -14,6 +14,13 @@ get '/book/:id/delete' do
   @book.delete
 end
 
+get '/book/:id/pdf' do
+  @book = Book.find(params[:id])
+  response.headers['content_type'] = "application/pdf"
+  attachment("book.pdf")
+  response.write(@book.pdf)
+end
+
 get '/' do
   haml :index
 end

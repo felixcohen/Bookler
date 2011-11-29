@@ -2,13 +2,13 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'feed-normalizer'
-require 'prince-ruby'
 require 'json'
 require 'open-uri'
 require 'digest/md5'
 require 'rdelicious'
 require 'active_record'
 require 'delayed_job'
+require 'princely/init'
 
 
 configure do
@@ -42,15 +42,19 @@ class Book < ActiveRecord::Base
         @chapters.push("content"=>"<img src=\""+post.urls.first+"\">")
       else  
         url = 'http://felixcohen.co.uk/readability.php?url='+post.urls.first
-        text = open(url).read
+        text = ''
+        timeout(10) do
+          text = open(url).read
+        end
         @chapters.push("title"=>post.title,"content"=>text)
       end
     end
     template = File.read('views/chapters.haml')
     haml_engine = Haml::Engine.new(template)
-    output = haml_engine.render(Object.new, :@chapters => @chapters, :self_title => self.title)
-    #puts output
-    self.content = output
+    self.content = haml_engine.render(Object.new, :@chapters => @chapters, :self_title => self.title)
+    princely = Princely::Prince.new()
+    princely.add_style_sheets('./public/print.css')
+    self.pdf = princely.pdf_from_string(self.content)
     self.save
   end
   
