@@ -8,7 +8,7 @@ require 'digest/md5'
 require 'rdelicious'
 require 'active_record'
 require 'delayed_job'
-require 'princely/init'
+require 'init'
 
 
 configure do
