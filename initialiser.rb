@@ -48,7 +48,7 @@ class Book < ActiveRecord::Base
         timeout(10) do
             text = open(post.urls.first).read
         end
-        text = Readability::Document.new(text, :tags => %w[div p img a], 
+        text = Readability::Document.new(text, :tags => %w[div p img a br li ul span], 
                                                :attributes => %w[src href]
                                                ).content
         @chapters.push("title"=>post.title,"content"=>text)
