@@ -9,6 +9,7 @@ require 'rdelicious'
 require 'active_record'
 require 'delayed_job'
 require 'init'
+require 'readability'
 
 
 configure do
@@ -41,12 +42,20 @@ class Book < ActiveRecord::Base
       if ((post.urls.first.include? 'jpg') || (post.urls.first.include? 'png') || (post.urls.first.include? 'gif'))
         @chapters.push("content"=>"<img src=\""+post.urls.first+"\">")
       else  
+      begin
         url = 'http://felixcohen.co.uk/readability.php?url='+post.urls.first
         text = ''
         timeout(10) do
-          text = open(url).read
+            text = open(post.urls.first).read
         end
+        text = Readability::Document.new(text, :tags => %w[div p img a], 
+                                               :attributes => %w[src href]
+                                               ).content
         @chapters.push("title"=>post.title,"content"=>text)
+        rescue OpenURI::HTTPError => ex
+              puts "Uh oh, we couldnt find that page"
+              next
+        end
       end
     end
     template = File.read('views/chapters.haml')
