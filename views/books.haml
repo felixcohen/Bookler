@@ -34,6 +34,9 @@
 											= book.title
 									%td
 										=book.url
+									%td
+										%a{:href => "/downloads/#{book.pdf}" }
+											pdf
 			%footer
 				%p
 					A 
