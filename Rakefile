@@ -1,4 +1,4 @@
-require './initialiser'
+require 'initialiser'
 
 namespace :dj do
 

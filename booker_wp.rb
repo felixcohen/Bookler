@@ -19,8 +19,8 @@ post '/' do
    @chapters = []
    feed = FeedNormalizer::FeedNormalizer.parse open(feedurl)
   feed.entries.each do |post|
-    d {post.urls.first.index(/[jpg|png|gif]/)}
-    d { post.urls.first }
+    puts post.urls.first.index(/[jpg|png|gif]/)
+    puts post.urls.first
     if ((post.urls.first.include? 'jpg') || (post.urls.first.include? 'png') || (post.urls.first.include? 'gif'))
       @chapters.push("content"=>"<img src=\""+post.urls.first+"\">")
     else  
