@@ -25,7 +25,7 @@ post '/' do
       rescue StandardError=>e
         puts "Error: #{e}"
       else
-        text = rpage.read
+        text = page.read
       ensure   
         puts url
       end
